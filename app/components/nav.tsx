@@ -5,15 +5,18 @@ import Link from 'next/link'
 
 const navItems = {
   '/': {
+    name: 'home',
+  },
+  '/about': {
     name: 'about',
   },
   '/blog': {
     name: 'projects',
   },
-  'https://vercel.com/templates/next.js/portfolio-starter-kit': {
+  '/resume.pdf': {
     name: 'resume',
   },
-  '': {
+  'mailto:faris1.salhi@gmail.com': {
     name: 'contact',
   },
 }
@@ -53,12 +56,21 @@ export function Navbar() {
                   onClick={() => handleClick(path)}
                   onMouseDown={() => handleMouseDown(path)}
                   onMouseUp={handleMouseUp}
-                  className={`transition-all flex items-center align-middle relative py-1 px-2 m-1 ${
-                    isActive && isClicked ? 'font-semibold text-xl' : isActive ? 'font-black text-xl' : isClicked ? 'font-black text-neutral-100' : 'hover:text-neutral-400'
-                  }`}
+                  className={`relative py-1 px-2 m-1 transition-all flex items-center align-middle ${
+                    isActive
+                      ? 'font-black text-xl'
+                      : 'hover:font-bold'
+                  } group`} // 'group' is used for hover state
                   style={{ lineHeight: '1.5', height: '2rem'}}
+                  target={path.startsWith('http') || path.endsWith('.pdf') ? '_blank' : undefined}
+                  rel={path.startsWith('http') || path.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
                 >
                   {name}
+                  <span
+                    className={`absolute bottom-[-3px] left-1/2 transform -translate-x-1/2 h-[1px] bg-black dark:bg-white transition-all duration-200 ease-in-out rounded-full
+                      ${isActive ? 'w-[50%] h-[2px]' : 'w-0 group-hover:w-[50%]'}`}
+                    style={{ transformOrigin: 'center' }} // Origin is set to center for expansion from the middle
+                  />
                 </Link>
               )
             })}

@@ -3,14 +3,22 @@ import { Projects } from 'app/components/projects'
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        About Me
+      <h1 className="mb-2 text-4xl tracking-wider font-stretch-expanded font-bold">
+        FARIS SALHI
       </h1>
-      <p className="mb-4">
-        {`I’m a 4th-year Computer Science student at the University of Calgary, with a strong foundation in Java and C. My academic journey has been shaped by tackling complex problems, from designing algorithms to optimizing system performance. With a passion for software development and a keen interest in efficient computing, I aim to bridge theory and real-world application. While I enjoy creative pursuits like writing in my spare time, my primary focus is on honing my technical skills and contributing to innovative projects. Let’s collaborate to bring ideas to life through technology!`}
+      <h2 className="mb-2 text-xl font-normal tracking-tighter">
+        4th-year Computer Science Student at the University of Calgary
+      </h2>
+      <p className="mb-4 italic">
+        {"In pursuit of perfection, wherever the journey leads."}
       </p>
-      <div className="my-8">
-        <Projects />
+      <div className="transition-transform duration-300 w-72 h-72 overflow-hidden rounded-md mt-4 shadow-lg hover:scale-105">
+        <img
+          src='\faris.jpeg'
+          alt='Faris Salhi'
+          className='object-cover w-full h-full'
+        >
+        </img>
       </div>
     </section>
   )
