@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getProjects } from 'app/blog/utils'
+import { formatDate, getProjects } from 'app/projects/utils'
 import { baseUrl } from 'app/sitemap'
 import Link from 'next/link'
 
@@ -37,7 +37,7 @@ export function generateMetadata({ params }) {
       description,
       type: 'article',
       publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: `${baseUrl}/projects/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -53,7 +53,7 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
+export default function Project({ params }) {
   let post = getProjects().find((post) => post.slug === params.slug)
 
   if (!post) {
@@ -63,7 +63,7 @@ export default function Blog({ params }) {
   return (
     <section>
       <Link
-        href="/blog"
+        href="/projects"
         className="transition-all text-neutral-800 dark:text-neutral-200 hover:font-bold mb-4 inline-block">
         <span className="inline-block transition-transform transform duration-200 hover:-translate-x-1 mr-1">
           ←
@@ -77,7 +77,7 @@ export default function Blog({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            '@type': 'Project',
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
@@ -85,7 +85,7 @@ export default function Blog({ params }) {
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/blog/${post.slug}`,
+            url: `${baseUrl}/projects/${post.slug}`,
             author: {
               '@type': 'Person',
               name: 'My Portfolio',

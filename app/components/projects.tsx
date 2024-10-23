@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { formatDate, getProjects } from 'app/blog/utils'
+import { formatDate, getProjects } from 'app/projects/utils'
 
 export function Projects() {
   let allProjects = getProjects()
@@ -19,7 +19,7 @@ export function Projects() {
           <Link
             key={project.slug}
             className="flex flex-col space-y-1 mb-4"
-            href={`/blog/${project.slug}`}
+            href={`/projects/${project.slug}`}
           >
             <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2 bg-neutral-100 dark:border-neutral-950 dark:bg-neutral-800 rounded-lg p-4 group hover:bg-neutral-200  dark:hover:text-neutral-100 dark:hover:bg-neutral-700">
               <p className="text-neutral-500 dark:text-neutral-400 w-[200px] tabular-nums ">
