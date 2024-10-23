@@ -18,19 +18,8 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 w-full bg-white dark:bg-black">
+    <footer className="relative bottom-0 bg-white dark:bg-neutral-900">
       <ul className="font-sm mt-5 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100 hover:font-bold"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="/rss"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">rss</p>
-          </a>
-        </li>
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100 hover:font-bold"
@@ -58,5 +47,5 @@ export default function Footer() {
         Built with <strong>Next.js</strong> and <strong>Tailwind CSS</strong>. Deployed with <strong>Vercel.</strong>
       </p>
     </footer>
-  )
+  );
 }

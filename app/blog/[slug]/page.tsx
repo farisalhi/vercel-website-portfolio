@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getProjects } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   let posts = getProjects()
@@ -22,6 +23,7 @@ export function generateMetadata({ params }) {
     publishedAt: publishedTime,
     summary: description,
     image,
+    languages,
   } = post.metadata
   let ogImage = image
     ? image
@@ -60,6 +62,15 @@ export default function Blog({ params }) {
 
   return (
     <section>
+      <Link
+        href="/blog"
+        className="transition-all text-neutral-800 dark:text-neutral-200 hover:font-bold mb-4 inline-block">
+        <span className="inline-block transition-transform transform duration-200 hover:-translate-x-1 mr-1">
+          ←
+        </span>
+        back to projects
+      </Link>
+
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -79,20 +90,29 @@ export default function Blog({ params }) {
               '@type': 'Person',
               name: 'My Portfolio',
             },
+            inLanguage: post.metadata.languages,
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
+      <h1 className="title font-semibold text-4xl tracking-normal">
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="text-sm text-neutral-6\00 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
+      {/* <Link
+      className='transition-all underline dark:text-neutral-200 dark:hover:font-bold dark:hover:text-neutral-100'
+      href="/novel-peek.pdf"
+      rel="noopener noreferrer"
+      target="_blank"
+      >
+      Excerpt from my novel "Dunya"
+      </Link> */}
     </section>
   )
 }

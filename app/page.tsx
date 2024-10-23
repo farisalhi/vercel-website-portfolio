@@ -6,13 +6,13 @@ export default function Page() {
       <h1 className="mb-2 text-4xl tracking-wider font-stretch-expanded font-bold">
         FARIS SALHI
       </h1>
-      <h2 className="mb-2 text-xl font-normal tracking-tighter">
+      <h2 className="mb-2 text-xl font-normal tracking-normal">
         4th-year Computer Science Student at the University of Calgary
       </h2>
       <p className="mb-4 italic">
-        {"In pursuit of perfection, wherever the journey leads."}
+        {"Computer science enthusiast with a passion for networking, security, and innovative solutions. Leader, problem solver, and creative mind behind real-world projects."}
       </p>
-      <div className="transition-transform duration-300 w-96 h-96 overflow-hidden rounded-md mt-4 shadow-lg hover:scale-105">
+      <div className="w-72 h-80 rounded-lg overflow-hidden mt-4 shadow-lg">
         <img
           src='\faris.jpeg'
           alt='Faris Salhi'
