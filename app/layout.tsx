@@ -7,12 +7,13 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
+import { Providers } from './providers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: 'Faris Salhi',
-    template: '%s | Faris Salhi',
+    template: 'Faris Salhi',
   },
   description: 'This is my portfolio.',
   openGraph: {
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
     siteName: 'My Portfolio',
     locale: 'en_US',
     type: 'website',
+  },
+  icons: {
+    icon: '/icon.ico'
   },
   robots: {
     index: true,
@@ -51,13 +55,16 @@ export default function RootLayout({
         GeistSans.variable,
         GeistMono.variable
       )}
+      suppressHydrationWarning
     >
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto flex flex-col h-screen">
-        <Navbar />
-        <main className="flex-grow mt-6 flex flex-col px-2 md:px-0">
-          {children}
-        </main>
+        <Providers>
+          <Navbar />
+          <main className="flex-grow mt-6 flex flex-col px-2 md:px-0">
+            {children}
+          </main>
         <Footer />
+        </Providers>
         <Analytics />
         <SpeedInsights />
       </body>

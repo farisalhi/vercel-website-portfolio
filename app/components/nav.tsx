@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
+import ThemeToggle from './theme-toggle'
 
 const navItems = {
   '/': {
@@ -74,6 +75,9 @@ export function Navbar() {
                 </Link>
               )
             })}
+          </div>
+          <div className='ml-auto flex items-center justify-center h-full overflow-hidden'>
+            <ThemeToggle />
           </div>
         </nav>
       </div>
