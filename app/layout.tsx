@@ -51,22 +51,24 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-neutral-900',
+        'w-full h-full bg-white dark:bg-neutral-900',
         GeistSans.variable,
         GeistMono.variable
       )}
       suppressHydrationWarning
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto flex flex-col h-screen">
-        <Providers>
-          <Navbar />
-          <main className="flex-grow mt-6 flex flex-col px-2 md:px-0">
-            {children}
-          </main>
-        <Footer />
-        </Providers>
-        <Analytics />
-        <SpeedInsights />
+      <body className="antialiased w-full h-full bg-white dark:bg-neutral-900">
+        <div className="max-w-xl mx-4 pt-8 lg:mx-auto flex flex-col min-h-screen">
+          <Providers>
+            <Navbar />
+            <main className="flex-grow mt-6 flex flex-col px-2 md:px-0">
+              {children}
+            </main>
+            <Footer />
+          </Providers>
+          <Analytics />
+          <SpeedInsights />
+        </div>
       </body>
     </html>
   )

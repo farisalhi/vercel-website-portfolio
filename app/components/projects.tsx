@@ -22,16 +22,18 @@ export function Projects() {
             href={`/projects/${project.slug}`}
           >
             <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2 bg-neutral-100 dark:border-neutral-950 dark:bg-neutral-800 rounded-lg p-4 group hover:bg-neutral-200  dark:hover:text-neutral-100 dark:hover:bg-neutral-700">
-              <p className="text-neutral-500 dark:text-neutral-400 w-[200px] tabular-nums ">
-                {formatDate(project.metadata.publishedAt, false)}
-              </p>
-              <p className="text-neutral-600 dark:text-neutral-400 tracking-normal group-hover:text-neutral-900 dark:group-hover:text-neutral-100">
-                {project.metadata.title}
-              </p>
+              <div className="flex flex-row flex-grow items-center">
+                <p className="text-neutral-500 dark:text-neutral-400 w-[200px] tabular-nums ">
+                  {formatDate(project.metadata.publishedAt, false)}
+                </p>
+                <p className="text-neutral-600 dark:text-neutral-400 tracking-normal group-hover:text-neutral-900 dark:group-hover:text-neutral-100">
+                  {project.metadata.title}
+                </p>
+              </div>
               {project.metadata.languages && (
-                <div className="ml-auto">
-                  <p className={"rounded-3xl bg-neutral-200 text-neutral-500  dark:bg-neutral-700 dark:text-neutral-300 p-0.5 pl-2 pr-2 text-right text-sm group-hover:bg-neutral-100 dark:group-hover:bg-neutral-600"}>
-                  {project.metadata.languages}
+                <div className="flex-shrink-0">
+                  <p className="rounded-3xl bg-neutral-200 text-neutral-500  dark:bg-neutral-700 dark:text-neutral-300 p-0.5 pl-2 pr-2 text-sm group-hover:bg-neutral-100 dark:group-hover:bg-neutral-600 whitespace-nowrap">
+                    {project.metadata.languages}
                   </p>
                 </div>
               )}

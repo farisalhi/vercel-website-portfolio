@@ -76,7 +76,7 @@ export function Navbar() {
               )
             })}
           </div>
-          <div className='ml-auto flex items-center justify-center h-full overflow-hidden'>
+          <div className='ml-auto self-center flex items-center justify-center h-full overflow-hidden'>
             <ThemeToggle />
           </div>
         </nav>
