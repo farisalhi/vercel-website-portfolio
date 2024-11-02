@@ -18,32 +18,30 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="relative bottom-0 bg-white dark:bg-neutral-900">
-      <ul className="font-sm mt-5 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+    <footer className="w-full mt-auto py-8">
+      <ul className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100 hover:font-bold"
+            className="text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 hover:underline dark:hover:underline dark:hover:text-neutral-400 transition-colors decoration-from-font hover:decoration-2 after:content-['_↗'] after:inline-block after:transition-transform after:hover:translate-x-1 after:hover:-translate-y-1"
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/farisalhi"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
+            <span className="ml-2">github</span>
           </a>
         </li>
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100 hover:font-bold"
+            className="text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 hover:underline dark:hover:underline dark:hover:text-neutral-400 transition-colors decoration-from-font hover:decoration-2 after:content-['_↗'] after:inline-block after:transition-transform after:hover:translate-x-1 after:hover:-translate-y-1"
             rel="noopener noreferrer"
             target="_blank"
             href="https://www.linkedin.com/in/farisalhi/"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">linkedin</p>
+            <span className="ml-2">linkedin</span>
           </a>
         </li>
       </ul>
-      <p className="mt-5 mb-5 text-sm text-neutral-600 dark:text-neutral-300">
+      <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-300">
         Built with <strong>Next.js</strong> and <strong>Tailwind CSS</strong>. Deployed with <strong>Vercel.</strong>
       </p>
     </footer>

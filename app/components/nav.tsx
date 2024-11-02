@@ -40,13 +40,13 @@ export function Navbar() {
   }
 
   return (
-    <aside className="-ml-[8px] mb-16 tracking-tight">
+    <aside className="mb-8">
       <div className="lg:sticky lg:top-20">
         <nav
-          className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex flex-row items-center justify-between relative px-0 pb-0 fade"
           id="nav"
         >
-          <div className="flex flex-row space-x-0 pr-10">
+          <div className="flex flex-row flex-wrap gap-1">
             {Object.entries(navItems).map(([path, { name }]) => {
               const isActive = currentPath === path
               const isClicked = clickedPath === path
@@ -57,11 +57,11 @@ export function Navbar() {
                   onClick={() => handleClick(path)}
                   onMouseDown={() => handleMouseDown(path)}
                   onMouseUp={handleMouseUp}
-                  className={`relative py-1 px-2 m-1 transition-all flex items-center align-middle ${
+                  className={`relative py-1 px-2 transition-all flex items-center align-middle ${
                     isActive
                       ? 'font-black text-xl'
                       : 'hover:font-bold'
-                  } group`} // 'group' is used for hover state
+                  } group`}
                   style={{ lineHeight: '1.5', height: '2rem'}}
                   target={path.startsWith('http') || path.endsWith('.pdf') ? '_blank' : undefined}
                   rel={path.startsWith('http') || path.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
@@ -70,13 +70,13 @@ export function Navbar() {
                   <span
                     className={`absolute bottom-[-3px] left-1/2 transform -translate-x-1/2 h-[1px] bg-black dark:bg-white transition-all duration-200 ease-in-out rounded-full
                       ${isActive ? 'w-[50%] h-[2px]' : 'w-0 group-hover:w-[50%]'}`}
-                    style={{ transformOrigin: 'center' }} // Origin is set to center for expansion from the middle
+                    style={{ transformOrigin: 'center' }}
                   />
                 </Link>
               )
             })}
           </div>
-          <div className='ml-auto self-center flex items-center justify-center h-full overflow-hidden'>
+          <div className='flex items-center justify-center h-full'>
             <ThemeToggle />
           </div>
         </nav>

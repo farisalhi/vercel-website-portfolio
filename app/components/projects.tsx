@@ -5,12 +5,10 @@ export function Projects() {
   let allProjects = getProjects()
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {allProjects
         .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
+          if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
             return -1
           }
           return 1
@@ -18,25 +16,28 @@ export function Projects() {
         .map((project) => (
           <Link
             key={project.slug}
-            className="flex flex-col space-y-1 mb-4"
+            className="block"
             href={`/projects/${project.slug}`}
           >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2 bg-neutral-100 dark:border-neutral-950 dark:bg-neutral-800 rounded-lg p-4 group hover:bg-neutral-200  dark:hover:text-neutral-100 dark:hover:bg-neutral-700">
-              <div className="flex flex-row flex-grow items-center">
-                <p className="text-neutral-500 dark:text-neutral-400 w-[200px] tabular-nums ">
+            <div className="w-full flex flex-col bg-neutral-200 dark:bg-neutral-800 rounded-md p-4 
+              group hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:scale-[101%] transition-transform">
+              <div className="flex flex-col sm:flex-row gap-2">
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 min-w-[120px]">
                   {formatDate(project.metadata.publishedAt, false)}
                 </p>
-                <p className="text-neutral-600 dark:text-neutral-400 tracking-normal group-hover:text-neutral-900 dark:group-hover:text-neutral-100">
+                <p className="ml-10 text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 
+                  dark:group-hover:text-neutral-100 flex-grow">
                   {project.metadata.title}
                 </p>
+                {project.metadata.languages && (
+                  <div className="sm:self-end mt-2 sm:mt-0">
+                    <span className="inline-block rounded-3xl bg-neutral-300 dark:bg-neutral-700 
+                      text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 px-3 py-1 text-sm group-hover:bg-neutral-200 dark:group-hover:bg-neutral-600">
+                      {project.metadata.languages}
+                    </span>
+                  </div>
+                )}
               </div>
-              {project.metadata.languages && (
-                <div className="flex-shrink-0">
-                  <p className="rounded-3xl bg-neutral-200 text-neutral-500  dark:bg-neutral-700 dark:text-neutral-300 p-0.5 pl-2 pr-2 text-sm group-hover:bg-neutral-100 dark:group-hover:bg-neutral-600 whitespace-nowrap">
-                    {project.metadata.languages}
-                  </p>
-                </div>
-              )}
             </div>
           </Link>
         ))}
