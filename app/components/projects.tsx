@@ -20,7 +20,7 @@ export function Projects() {
             href={`/projects/${project.slug}`}
           >
             <div className="w-full flex flex-col bg-neutral-200 dark:bg-neutral-800 rounded-md p-4 
-              group hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:scale-[101%] transition-transform">
+              group hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-transform">
               <div className="flex flex-col sm:flex-row gap-2">
                 <p className="text-sm text-neutral-500 dark:text-neutral-400 min-w-[120px]">
                   {formatDate(project.metadata.publishedAt, false)}
