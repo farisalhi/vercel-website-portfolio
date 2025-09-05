@@ -7,7 +7,7 @@ export default function About() {
         about me
       </h1>
       <p className="mb-4">
-        {`I’m a 4th-year Computer Science student at the University of Calgary, with a strong foundation in Java and C and a passion for computer networking, cybersecurity, and software development.`}
+        {`5th-year Computer Science student at the University of Calgary with experience in software engineering, full‑stack web development, and object oriented design. Skilled in writing secure, tested, and continuously integrated code within agile teams. Experienced in developing scalable applications, interactive systems, and networked software.`}
       </p>
     </section>
   )

@@ -14,7 +14,7 @@ export default function Page() {
       </p>
       <div className="w-72 h-80 rounded-lg overflow-hidden mt-4 shadow-lg dark:shadow-neutral-700">
         <img
-          src='\faris.jpeg'
+          src='Faris.jpg'
           alt='Faris Salhi'
           className='object-cover w-full h-full'
         >

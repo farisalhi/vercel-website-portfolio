@@ -14,7 +14,7 @@ const navItems = {
   '/projects': {
     name: 'projects',
   },
-  '/resume.pdf': {
+  '/Resume (Faris Salhi).pdf': {
     name: 'resume',
   },
   'mailto:faris1.salhi@gmail.com': {
