@@ -7,7 +7,7 @@ export default function Page() {
         FARIS SALHI
       </h1>
       <h2 className="mb-2 text-xl font-normal tracking-normal">
-        4th-year Computer Science Student at the University of Calgary
+        BSC. in Computer Science from the University of Calgary
       </h2>
       <p className="mb-4 italic">
         {"Computer science enthusiast with a passion for networking, security, and innovative solutions. Leader, problem solver, and creative mind behind real-world projects."}
