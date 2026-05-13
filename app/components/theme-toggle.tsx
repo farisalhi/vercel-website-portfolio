@@ -28,7 +28,7 @@ export default function ThemeToggle() {
 			onMouseDown={() => setMouseDown(true)}
 			onMouseUp={() => setMouseDown(false)}
 			onClick={handleThemeToggle}
-			className="soft-lift rounded-md border border-white/60 bg-white/35 p-2 text-neutral-600 shadow-[0_12px_32px_-30px_rgba(249,115,22,0.65)] backdrop-blur-xl hover:border-orange-200 hover:bg-white/65 hover:text-orange-600 dark:border-white/10 dark:bg-neutral-950/35 dark:text-neutral-400 dark:hover:border-orange-500/30 dark:hover:bg-neutral-900/70 dark:hover:text-orange-300"
+			className="minimal-action project-row px-2 py-2 text-neutral-600 dark:text-neutral-400"
 			aria-label="Toggle theme"
 		>
 			{resolvedTheme === 'dark' ? (

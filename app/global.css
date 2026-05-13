@@ -58,7 +58,7 @@ body {
   .action-button,
   .primary-action,
   .secondary-action {
-    @apply relative inline-flex border border-neutral-300 bg-transparent px-3 py-2 font-mono text-sm text-neutral-700 transition-[border-color,color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-700 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-orange-500/50 dark:hover:text-orange-300;
+    @apply relative inline-flex border-y border-neutral-300 bg-transparent px-3 py-2 font-mono text-sm text-neutral-700 transition-[border-color,color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-700 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-orange-500/50 dark:hover:text-orange-300;
   }
 
   .interactive-glow {
@@ -66,31 +66,32 @@ body {
   }
 
   .project-row {
-    @apply relative;
+    @apply relative isolate;
   }
 
   .project-row::after {
     content: '';
     background: radial-gradient(
       ellipse at center,
-      rgb(249 115 22 / 0.44) 0%,
-      rgb(249 115 22 / 0.18) 38%,
-      transparent 74%
+      rgb(249 115 22 / 0.42) 0%,
+      rgb(249 115 22 / 0.2) 42%,
+      transparent 76%
     );
-    filter: blur(10px);
+    filter: blur(8px);
     opacity: 0;
-    transform: translateY(4px) scaleX(0.74);
+    transform: translateY(2px) scaleX(0.84);
     transform-origin: center;
     transition:
       opacity 300ms var(--ease-out-soft, ease),
       transform 300ms var(--ease-out-soft, ease);
-    @apply pointer-events-none absolute inset-x-2 -bottom-3 h-5;
+    @apply pointer-events-none absolute inset-x-2 -bottom-1 -z-10 h-4;
   }
 
   .project-row:hover::after,
   .project-row:focus-visible::after {
+    animation: glow-flicker var(--glow-duration, 340ms) var(--ease-out-soft, ease) 1 both;
     opacity: 1;
-    transform: translateY(0) scaleX(1);
+    transform: translateY(1px) scaleX(var(--glow-scale, 0.96));
   }
 
   .image-frame {
@@ -194,6 +195,34 @@ body {
   }
 }
 
+@keyframes glow-flicker {
+  0% {
+    opacity: var(--glow-low, 0.28);
+    transform: translateY(2px) scaleX(0.82);
+  }
+
+  16% {
+    opacity: var(--glow-peak, 1);
+  }
+
+  30% {
+    opacity: var(--glow-dip, 0.42);
+  }
+
+  48% {
+    opacity: var(--glow-peak, 0.94);
+  }
+
+  64% {
+    opacity: var(--glow-warm, 0.68);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(1px) scaleX(var(--glow-scale, 0.96));
+  }
+}
+
 @keyframes cursor-blink {
   0%,
   45% {
@@ -208,6 +237,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-block {
+    animation: none;
+  }
+
+  .project-row:hover::after,
+  .project-row:focus-visible::after {
     animation: none;
   }
 

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AgeCounter } from 'app/components/age-counter'
 import { Projects } from 'app/components/projects'
+import { RandomGlowLink } from 'app/components/random-glow-link'
 
 const birthDate =
   process.env.NEXT_PUBLIC_BIRTH_DATE_ISO ?? '2002-05-26T00:00:00-06:00'
@@ -21,28 +22,28 @@ export default function Page() {
             user experiences.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2">
-            <Link
+            <RandomGlowLink
               href="/projects"
               className="minimal-action project-row"
             >
               View projects
-            </Link>
+            </RandomGlowLink>
             <span className="h-4 w-px bg-neutral-200 dark:bg-neutral-800" aria-hidden="true" />
-            <Link
+            <RandomGlowLink
               href="/Resume (Faris Salhi).pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="minimal-action project-row"
             >
               Resume
-            </Link>
+            </RandomGlowLink>
             <span className="h-4 w-px bg-neutral-200 dark:bg-neutral-800" aria-hidden="true" />
-            <a
+            <RandomGlowLink
               href="mailto:faris1.salhi@gmail.com"
               className="minimal-action project-row"
             >
               Contact
-            </a>
+            </RandomGlowLink>
           </div>
           <div className="mt-12 max-w-2xl">
             <div>

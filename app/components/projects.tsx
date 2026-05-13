@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { RandomGlowLink } from 'app/components/random-glow-link'
 import { formatDate, getProjects } from 'app/projects/utils'
 
 type ProjectsProps = {
@@ -19,11 +19,11 @@ export function Projects({ limit }: ProjectsProps) {
   }
 
   return (
-    <div className="divide-y divide-neutral-200/80 border-y border-neutral-200/80 dark:divide-neutral-800 dark:border-neutral-800">
+    <div>
       {projects.map((project) => (
-          <Link
+          <RandomGlowLink
             key={project.slug}
-            className="interactive-glow project-row group block py-5 hover:bg-white/45 dark:hover:bg-neutral-950/35 sm:px-2"
+            className="interactive-glow project-row group -mt-px block border-y border-neutral-200/80 py-5 first:mt-0 hover:bg-white/45 dark:border-neutral-800 dark:hover:bg-neutral-950/35 sm:px-2"
             href={`/projects/${project.slug}`}
           >
             <article className="grid gap-3 sm:grid-cols-[7.5rem_1fr_auto_auto] sm:items-start">
@@ -50,7 +50,7 @@ export function Projects({ limit }: ProjectsProps) {
                 -&gt;
               </span>
             </article>
-          </Link>
+          </RandomGlowLink>
         ))}
     </div>
   )
