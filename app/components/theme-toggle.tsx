@@ -28,7 +28,7 @@ export default function ThemeToggle() {
 			onMouseDown={() => setMouseDown(true)}
 			onMouseUp={() => setMouseDown(false)}
 			onClick={handleThemeToggle}
-			className="soft-lift rounded-md border border-transparent p-2 text-neutral-700 hover:border-neutral-200 hover:bg-white hover:text-neutral-950 dark:text-neutral-300 dark:hover:border-neutral-800 dark:hover:bg-neutral-900 dark:hover:text-neutral-50"
+			className="soft-lift rotate-3 border-2 border-neutral-950 bg-cyan-300 p-2 text-neutral-950 shadow-[4px_4px_0_rgba(10,10,10,0.95)] hover:-translate-y-1 hover:bg-pink-400 dark:border-yellow-200 dark:bg-yellow-200 dark:text-neutral-950 dark:shadow-[4px_4px_0_rgba(255,64,129,0.85)]"
 			aria-label="Toggle theme"
 		>
 			{resolvedTheme === 'dark' ? (

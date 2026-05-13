@@ -59,8 +59,8 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="antialiased w-full min-h-screen bg-stone-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50">
-        <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-5 sm:px-8 sm:py-7">
+      <body className="w-full min-h-screen overflow-x-hidden antialiased text-neutral-950 dark:text-neutral-50">
+        <div className="anti-stage mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-4 sm:px-7 sm:py-6">
           <Providers>
             <Navbar />
             <main className="flex-grow py-10 sm:py-14">

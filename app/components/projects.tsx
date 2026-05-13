@@ -18,28 +18,38 @@ export function Projects({ limit }: ProjectsProps) {
     projects = projects.slice(0, limit)
   }
 
+  const rotations = ['-rotate-[0.7deg]', 'rotate-[1.1deg]', '-rotate-[1.4deg]', 'rotate-[0.6deg]']
+  const swatches = [
+    'bg-white dark:bg-neutral-950',
+    'bg-yellow-200 dark:bg-neutral-950',
+    'bg-cyan-200 dark:bg-neutral-950',
+    'bg-pink-100 dark:bg-neutral-950',
+  ]
+
   return (
-    <div className="grid gap-3">
-      {projects.map((project) => (
+    <div className="grid gap-5">
+      {projects.map((project, index) => (
           <Link
             key={project.slug}
-            className="soft-lift group block rounded-md border border-neutral-200/80 bg-white/65 p-4 hover:border-teal-700/30 hover:bg-white hover:shadow-[0_18px_60px_-48px_rgba(15,23,42,0.65)] dark:border-neutral-800 dark:bg-neutral-900/55 dark:hover:border-teal-300/30 dark:hover:bg-neutral-900"
+            className={`anti-card soft-lift group block p-4 transition-transform hover:-translate-y-1 hover:rotate-0 ${
+              rotations[index % rotations.length]
+            } ${swatches[index % swatches.length]}`}
             href={`/projects/${project.slug}`}
           >
-            <article className="grid gap-3 sm:grid-cols-[8rem_1fr_auto] sm:items-start">
-              <p className="font-mono text-xs text-neutral-500 dark:text-neutral-500">
+            <article className="grid gap-4 sm:grid-cols-[7.5rem_1fr_auto] sm:items-start">
+              <p className="w-fit border-2 border-neutral-950 bg-neutral-950 px-2 py-1 font-mono text-xs font-black uppercase text-yellow-200 dark:border-yellow-200 dark:bg-yellow-200 dark:text-neutral-950">
                 {formatDate(project.metadata.publishedAt, false)}
               </p>
               <div>
-                <h2 className="font-medium text-neutral-950 transition-colors group-hover:text-teal-700 dark:text-neutral-50 dark:group-hover:text-teal-300">
+                <h2 className="text-xl font-black uppercase leading-6 text-neutral-950 transition-colors group-hover:text-pink-700 dark:text-neutral-50 dark:group-hover:text-yellow-200">
                   {project.metadata.title}
                 </h2>
-                <p className="mt-1 max-w-2xl text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-neutral-700 dark:text-neutral-300">
                   {project.metadata.summary}
                 </p>
               </div>
               {project.metadata.languages && (
-                <span className="w-fit rounded-md border border-neutral-200 px-2.5 py-1 font-mono text-[11px] text-neutral-600 transition-colors group-hover:border-teal-700/30 group-hover:text-teal-700 dark:border-neutral-700 dark:text-neutral-400 dark:group-hover:border-teal-300/30 dark:group-hover:text-teal-300">
+                <span className="w-fit rotate-2 border-2 border-neutral-950 bg-pink-500 px-2.5 py-1 font-mono text-[11px] font-black uppercase text-white transition-colors group-hover:bg-yellow-300 group-hover:text-neutral-950 dark:border-yellow-200 dark:bg-cyan-300 dark:text-neutral-950">
                   {project.metadata.languages}
                 </span>
               )}
@@ -49,4 +59,3 @@ export function Projects({ limit }: ProjectsProps) {
     </div>
   )
 }
-

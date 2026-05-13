@@ -5,7 +5,8 @@
 @import '@fontsource/inter';
 
 ::selection {
-  background: rgb(20 184 166 / 0.22);
+  background: rgb(255 242 0 / 0.75);
+  color: rgb(10 10 10);
 }
 
 html {
@@ -23,26 +24,90 @@ body {
 }
 
 @layer base {
+  body {
+    background:
+      linear-gradient(90deg, rgb(10 10 10 / 0.055) 1px, transparent 1px),
+      linear-gradient(rgb(10 10 10 / 0.055) 1px, transparent 1px),
+      radial-gradient(circle at 18% 14%, rgb(255 242 0 / 0.22), transparent 26rem),
+      radial-gradient(circle at 86% 8%, rgb(255 64 129 / 0.18), transparent 24rem),
+      rgb(250 250 244);
+    background-size: 34px 34px, 34px 34px, auto, auto, auto;
+  }
+
+  .dark body {
+    background:
+      linear-gradient(90deg, rgb(255 255 255 / 0.07) 1px, transparent 1px),
+      linear-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px),
+      radial-gradient(circle at 22% 16%, rgb(255 242 0 / 0.12), transparent 24rem),
+      radial-gradient(circle at 82% 10%, rgb(0 229 255 / 0.14), transparent 22rem),
+      rgb(9 9 11);
+    background-size: 34px 34px, 34px 34px, auto, auto, auto;
+  }
+
   a,
   button {
-    @apply outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-50 dark:focus-visible:ring-offset-neutral-950;
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100 dark:focus-visible:ring-offset-neutral-950;
   }
 }
 
 @layer components {
+  .anti-stage {
+    @apply relative isolate;
+  }
+
+  .anti-stage::before {
+    content: '';
+    background-image:
+      repeating-linear-gradient(
+        -8deg,
+        transparent 0 14px,
+        rgb(10 10 10 / 0.08) 14px 15px
+      );
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    @apply fixed inset-0 -z-10 opacity-70 dark:opacity-40;
+  }
+
+  .anti-shell {
+    @apply border-x-2 border-neutral-950/90 bg-stone-50/75 shadow-[12px_12px_0_rgba(255,64,129,0.62)] backdrop-blur-[2px] dark:border-yellow-200/90 dark:bg-neutral-950/75 dark:shadow-[12px_12px_0_rgba(0,229,255,0.42)];
+  }
+
+  .anti-title {
+    text-shadow:
+      0.05em 0.035em 0 rgb(0 229 255 / 0.86),
+      -0.045em -0.025em 0 rgb(255 64 129 / 0.8);
+    @apply font-black uppercase leading-[0.82] tracking-normal;
+  }
+
+  .anti-label {
+    @apply inline-flex w-fit rotate-[-2deg] border-2 border-neutral-950 bg-yellow-300 px-2 py-1 font-mono text-xs font-bold uppercase text-neutral-950 shadow-[5px_5px_0_rgba(10,10,10,0.95)] dark:border-yellow-200 dark:bg-pink-500 dark:text-white dark:shadow-[5px_5px_0_rgba(250,250,244,0.9)];
+  }
+
+  .anti-button-primary {
+    @apply inline-flex rotate-[-1deg] items-center border-2 border-neutral-950 bg-neutral-950 px-5 py-3 font-mono text-sm font-bold uppercase text-yellow-200 shadow-[7px_7px_0_rgba(255,64,129,0.85)] transition-transform hover:-translate-y-1 hover:rotate-1 dark:border-yellow-200 dark:bg-yellow-200 dark:text-neutral-950 dark:shadow-[7px_7px_0_rgba(0,229,255,0.75)];
+  }
+
+  .anti-button-secondary {
+    @apply inline-flex rotate-2 items-center border-2 border-neutral-950 bg-cyan-300 px-5 py-3 font-mono text-sm font-bold uppercase text-neutral-950 shadow-[7px_7px_0_rgba(10,10,10,0.95)] transition-transform hover:-translate-y-1 hover:rotate-[-1deg] dark:border-yellow-200 dark:bg-pink-500 dark:text-white dark:shadow-[7px_7px_0_rgba(250,250,244,0.85)];
+  }
+
+  .anti-card {
+    @apply border-2 border-neutral-950 bg-white shadow-[8px_8px_0_rgba(10,10,10,0.95)] dark:border-yellow-200 dark:bg-neutral-950 dark:shadow-[8px_8px_0_rgba(255,242,0,0.72)];
+  }
+
   .terminal-frame {
-    @apply border border-neutral-200 bg-white/70 shadow-[0_24px_80px_-56px_rgba(15,23,42,0.55)] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/60 dark:shadow-[0_24px_80px_-56px_rgba(20,184,166,0.35)];
+    @apply anti-card bg-white/85 backdrop-blur dark:bg-neutral-950/80;
   }
 
   .terminal-line::before {
     content: '$ ';
-    @apply text-teal-700 dark:text-teal-300;
+    @apply text-pink-600 dark:text-yellow-300;
   }
 
   .terminal-cursor::after {
     content: '_';
     animation: cursor-blink 1.4s steps(2, start) infinite;
-    @apply ml-1 text-teal-700 dark:text-teal-300;
+    @apply ml-1 text-pink-600 dark:text-yellow-300;
   }
 
   .motion-link {
@@ -54,7 +119,7 @@ body {
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 280ms var(--ease-out-soft, ease);
-    @apply absolute -bottom-0.5 left-0 h-px w-full bg-teal-600 dark:bg-teal-300;
+    @apply absolute -bottom-0.5 left-0 h-1 w-full bg-pink-500 dark:bg-yellow-300;
   }
 
   .motion-link:hover::after,

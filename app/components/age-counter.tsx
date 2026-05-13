@@ -68,11 +68,11 @@ export function AgeCounter({ birthDate }: AgeCounterProps) {
 
   if (!birthTime || elapsedMicros === null) {
     return (
-      <div className="terminal-frame rounded-md p-4 font-mono text-sm">
+      <div className="terminal-frame -rotate-1 p-4 font-mono text-sm">
         <p className="terminal-line text-neutral-700 dark:text-neutral-300">
           run age --realtime
         </p>
-        <p className="mt-3 text-amber-700 dark:text-amber-300">
+        <p className="mt-3 font-black uppercase text-pink-600 dark:text-yellow-200">
           invalid birth date
         </p>
       </div>
@@ -83,28 +83,28 @@ export function AgeCounter({ birthDate }: AgeCounterProps) {
     getElapsedParts(elapsedMicros)
 
   return (
-    <div className="terminal-frame rounded-md p-4 font-mono text-sm">
-      <p className="terminal-line text-neutral-700 dark:text-neutral-300">
+    <div className="terminal-frame -rotate-1 p-4 font-mono text-sm">
+      <p className="terminal-line font-bold uppercase text-neutral-800 dark:text-neutral-200">
         run age --realtime
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end">
         <div>
-          <p className="text-xs uppercase text-neutral-500 dark:text-neutral-500">
+          <p className="text-xs font-black uppercase text-pink-600 dark:text-yellow-200">
             age
           </p>
-          <p className="mt-1 text-2xl text-neutral-950 dark:text-neutral-50 sm:text-3xl">
+          <p className="mt-1 text-3xl font-black text-neutral-950 dark:text-neutral-50 sm:text-4xl">
             {years}
-            <span className="ml-2 text-base text-neutral-500 dark:text-neutral-500">
+            <span className="ml-2 text-base text-neutral-600 dark:text-neutral-300">
               years
             </span>
           </p>
         </div>
-        <p className="text-right text-lg text-teal-700 dark:text-teal-300">
+        <p className="bg-cyan-200 px-2 py-1 text-left text-lg font-black text-neutral-950 dark:bg-pink-500 dark:text-white sm:text-right">
           {days}d {pad(hours)}:{pad(minutes)}:{pad(seconds)}.
           {pad(micros, 6)}
         </p>
       </div>
-      <p className="mt-4 break-all text-xs text-neutral-600 dark:text-neutral-400">
+      <p className="mt-4 break-all text-xs font-bold text-neutral-700 dark:text-neutral-300">
         {formatNumber(elapsedMicros)} microseconds alive
       </p>
     </div>
