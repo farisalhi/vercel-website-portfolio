@@ -13,19 +13,21 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: 'Faris Salhi',
-    template: 'Faris Salhi',
+    template: '%s | Faris Salhi',
   },
-  description: 'This is my portfolio.',
+  description:
+    'Portfolio of Faris Salhi, a computer science graduate focused on software engineering, networking, and security.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Faris Salhi',
+    description:
+      'Portfolio of Faris Salhi, a computer science graduate focused on software engineering, networking, and security.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Faris Salhi',
     locale: 'en_US',
     type: 'website',
   },
   icons: {
-    icon: '/icon.ico'
+    icon: '/icon.ico',
   },
   robots: {
     index: true,
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
 
 export default function RootLayout({
   children,

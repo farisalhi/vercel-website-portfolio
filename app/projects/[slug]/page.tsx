@@ -3,6 +3,13 @@ import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getProjects } from 'app/projects/utils'
 import { baseUrl } from 'app/sitemap'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+type ProjectPageProps = {
+  params: {
+    slug: string
+  }
+}
 
 export async function generateStaticParams() {
   let posts = getProjects()
@@ -12,7 +19,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
+export function generateMetadata({
+  params,
+}: ProjectPageProps): Metadata | undefined {
   let post = getProjects().find((post) => post.slug === params.slug)
   if (!post) {
     return
@@ -23,7 +32,6 @@ export function generateMetadata({ params }) {
     publishedAt: publishedTime,
     summary: description,
     image,
-    languages,
   } = post.metadata
   let ogImage = image
     ? image
@@ -53,7 +61,7 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Project({ params }) {
+export default function Project({ params }: ProjectPageProps) {
   let post = getProjects().find((post) => post.slug === params.slug)
 
   if (!post) {
@@ -66,7 +74,7 @@ export default function Project({ params }) {
         href="/projects"
         className="transition-all text-neutral-800 dark:text-neutral-200 hover:font-bold mb-4 inline-block">
         <span className="inline-block transition-transform transform duration-200 hover:-translate-x-1 mr-1">
-          ←
+          &larr;
         </span>
         back to projects
       </Link>
@@ -84,11 +92,11 @@ export default function Project({ params }) {
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+              : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/projects/${post.slug}`,
             author: {
               '@type': 'Person',
-              name: 'My Portfolio',
+              name: 'Faris Salhi',
             },
             inLanguage: post.metadata.languages,
           }),
@@ -98,7 +106,7 @@ export default function Project({ params }) {
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-6\00 dark:text-neutral-400">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>

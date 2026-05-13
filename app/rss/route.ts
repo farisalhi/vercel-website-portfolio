@@ -1,6 +1,15 @@
 import { baseUrl } from 'app/sitemap'
 import { getProjects } from 'app/projects/utils'
 
+function escapeXml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
+
 export async function GET() {
   let allBlogs = await getProjects()
 
@@ -14,9 +23,9 @@ export async function GET() {
     .map(
       (post) =>
         `<item>
-          <title>${post.metadata.title}</title>
-          <link>${baseUrl}/blog/${post.slug}</link>
-          <description>${post.metadata.summary || ''}</description>
+          <title>${escapeXml(post.metadata.title)}</title>
+          <link>${baseUrl}/projects/${post.slug}</link>
+          <description>${escapeXml(post.metadata.summary || '')}</description>
           <pubDate>${new Date(
             post.metadata.publishedAt
           ).toUTCString()}</pubDate>
@@ -27,9 +36,9 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-        <title>My Portfolio</title>
+        <title>Faris Salhi</title>
         <link>${baseUrl}</link>
-        <description>This is my portfolio RSS feed</description>
+        <description>Project updates from Faris Salhi</description>
         ${itemsXml}
     </channel>
   </rss>`
