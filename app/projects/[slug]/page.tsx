@@ -69,7 +69,7 @@ export default function Project({ params }: ProjectPageProps) {
   }
 
   return (
-    <section className="max-w-3xl">
+    <section className="reveal-block max-w-3xl">
       <Link
         href="/projects"
         className="motion-link mb-8 inline-flex items-center font-mono text-sm text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-50">
@@ -115,7 +115,7 @@ export default function Project({ params }: ProjectPageProps) {
           </span>
         )}
       </div>
-      <article className="prose">
+      <article className="prose reveal-block reveal-delay-1">
         <CustomMDX source={post.content} />
       </article>
       {/* <Link

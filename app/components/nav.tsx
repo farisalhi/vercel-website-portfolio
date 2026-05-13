@@ -26,19 +26,19 @@ export function Navbar() {
   const currentPath = usePathname()
 
   return (
-    <header className="sticky top-0 z-20 border-b border-neutral-200/70 bg-stone-50/85 py-3 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-950/80">
-      <nav className="flex items-center justify-between gap-4" id="nav">
+    <header className="sticky top-0 z-20 -mx-5 border-y border-white/65 bg-stone-50/82 px-5 py-3 shadow-[0_18px_56px_-44px_rgba(249,115,22,0.6)] backdrop-blur-xl transition-[border-color,box-shadow,background-color] duration-300 dark:border-white/10 dark:bg-neutral-950/82 dark:shadow-[0_18px_56px_-42px_rgba(249,115,22,0.55)] sm:-mx-8 sm:px-8">
+      <nav className="flex items-center justify-between gap-5" id="nav">
         <Link
           href="/"
-          className="group shrink-0 font-mono text-sm text-neutral-950 dark:text-neutral-50"
+          className="group shrink-0 font-mono text-sm text-neutral-950 transition-colors hover:text-orange-600 dark:text-neutral-50 dark:hover:text-orange-300"
           aria-label="Faris Salhi home"
         >
-          <span className="text-teal-700 transition-colors group-hover:text-neutral-950 dark:text-teal-300 dark:group-hover:text-neutral-50">
+          <span className="text-neutral-500 transition-colors group-hover:text-orange-600 dark:text-neutral-500 dark:group-hover:text-orange-300">
             ~/
           </span>
           faris
         </Link>
-        <div className="flex min-w-0 flex-1 flex-wrap justify-end gap-x-4 gap-y-2 font-mono text-[13px] text-neutral-600 dark:text-neutral-400">
+        <div className="flex min-w-0 flex-1 flex-wrap justify-end gap-x-4 gap-y-2 font-mono text-[13px] text-neutral-700 dark:text-neutral-300">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = currentPath === path
 
@@ -48,8 +48,8 @@ export function Navbar() {
                 href={path}
                 className={`motion-link ${
                   isActive
-                    ? 'text-neutral-950 before:text-teal-700 dark:text-neutral-50 dark:before:text-teal-300'
-                    : 'hover:text-neutral-950 dark:hover:text-neutral-50'
+                    ? 'text-neutral-950 dark:text-neutral-50'
+                    : 'hover:text-orange-600 dark:hover:text-orange-300'
                 } before:mr-1 before:content-['/']`}
                 target={path.startsWith('http') || path.endsWith('.pdf') ? '_blank' : undefined}
                 rel={path.startsWith('http') || path.endsWith('.pdf') ? 'noopener noreferrer' : undefined}

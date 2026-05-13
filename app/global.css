@@ -5,7 +5,7 @@
 @import '@fontsource/inter';
 
 ::selection {
-  background: rgb(20 184 166 / 0.22);
+  background: rgb(249 115 22 / 0.2);
 }
 
 html {
@@ -14,6 +14,15 @@ html {
 
 body {
   text-rendering: optimizeLegibility;
+  background:
+    radial-gradient(circle at 50% -10%, rgb(249 115 22 / 0.08), transparent 28rem),
+    rgb(250 250 249);
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at 50% -10%, rgb(249 115 22 / 0.08), transparent 28rem),
+    rgb(10 10 10);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -25,24 +34,97 @@ body {
 @layer base {
   a,
   button {
-    @apply outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-50 dark:focus-visible:ring-offset-neutral-950;
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-50 dark:focus-visible:ring-offset-neutral-950;
   }
 }
 
 @layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-4xl;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-500;
+  }
+
+  .quiet-panel {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.45),
+      0 24px 80px -60px rgb(15 23 42 / 0.5);
+    @apply rounded-lg border border-white/60 bg-white/45 backdrop-blur-xl dark:border-white/10 dark:bg-neutral-950/40;
+  }
+
+  .minimal-action,
+  .action-button,
+  .primary-action,
+  .secondary-action {
+    @apply relative inline-flex border border-neutral-300 bg-transparent px-3 py-2 font-mono text-sm text-neutral-700 transition-[border-color,color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-700 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-orange-500/50 dark:hover:text-orange-300;
+  }
+
+  .interactive-glow {
+    @apply transition-[background-color,border-color,color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-300/70 dark:hover:border-orange-500/30;
+  }
+
+  .project-row {
+    @apply relative;
+  }
+
+  .project-row::after {
+    content: '';
+    background: radial-gradient(
+      ellipse at center,
+      rgb(249 115 22 / 0.44) 0%,
+      rgb(249 115 22 / 0.18) 38%,
+      transparent 74%
+    );
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(4px) scaleX(0.74);
+    transform-origin: center;
+    transition:
+      opacity 300ms var(--ease-out-soft, ease),
+      transform 300ms var(--ease-out-soft, ease);
+    @apply pointer-events-none absolute inset-x-2 -bottom-3 h-5;
+  }
+
+  .project-row:hover::after,
+  .project-row:focus-visible::after {
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+  }
+
+  .image-frame {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.35),
+      0 24px 80px -60px rgb(15 23 42 / 0.55);
+    @apply backdrop-blur-xl;
+  }
+
+  .reveal-block {
+    animation: reveal-block 520ms var(--ease-out-soft, ease) both;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 80ms;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 150ms;
+  }
+
   .terminal-frame {
-    @apply border border-neutral-200 bg-white/70 shadow-[0_24px_80px_-56px_rgba(15,23,42,0.55)] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/60 dark:shadow-[0_24px_80px_-56px_rgba(20,184,166,0.35)];
+    @apply quiet-panel;
   }
 
   .terminal-line::before {
     content: '$ ';
-    @apply text-teal-700 dark:text-teal-300;
+    @apply text-orange-600 dark:text-orange-300;
   }
 
   .terminal-cursor::after {
     content: '_';
     animation: cursor-blink 1.4s steps(2, start) infinite;
-    @apply ml-1 text-teal-700 dark:text-teal-300;
+    @apply ml-1 text-orange-600 dark:text-orange-300;
   }
 
   .motion-link {
@@ -54,7 +136,7 @@ body {
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 280ms var(--ease-out-soft, ease);
-    @apply absolute -bottom-0.5 left-0 h-px w-full bg-teal-600 dark:bg-teal-300;
+    @apply absolute -bottom-0.5 left-0 h-px w-full bg-orange-500 dark:bg-orange-300;
   }
 
   .motion-link:hover::after,
@@ -74,6 +156,7 @@ body {
 
   .soft-lift:hover {
     transform: translateY(-2px);
+    box-shadow: 0 18px 44px -30px rgb(249 115 22 / 0.68);
   }
 
   .prose {
@@ -99,6 +182,18 @@ body {
   }
 }
 
+@keyframes reveal-block {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes cursor-blink {
   0%,
   45% {
@@ -108,5 +203,22 @@ body {
   46%,
   100% {
     opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-block {
+    animation: none;
+  }
+
+  .quiet-panel,
+  .minimal-action,
+  .action-button,
+  .primary-action,
+  .secondary-action,
+  .interactive-glow,
+  .project-row::after,
+  .soft-lift {
+    transition: none;
   }
 }

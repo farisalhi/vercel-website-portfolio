@@ -8,60 +8,53 @@ const birthDate =
 
 export default function Page() {
   return (
-    <div className="space-y-16 sm:space-y-20">
-      <section className="grid items-end gap-10 md:grid-cols-[1fr_18rem]">
-        <div className="max-w-3xl">
-          <p className="terminal-line mb-5 font-mono text-sm text-neutral-600 dark:text-neutral-400">
-            whoami
-          </p>
-          <h1 className="text-5xl font-semibold tracking-normal text-neutral-950 dark:text-neutral-50 sm:text-6xl">
+    <div className="space-y-20 sm:space-y-24">
+      <section className="grid items-end gap-12 md:grid-cols-[1fr_16rem]">
+        <div className="reveal-block">
+          <p className="eyebrow mb-6">BSc. Computer Science</p>
+          <h1 className="max-w-3xl text-5xl font-semibold tracking-[-0.02em] text-neutral-950 dark:text-neutral-50 sm:text-7xl">
             Faris Salhi
           </h1>
-          <p className="mt-6 max-w-2xl text-xl leading-8 text-neutral-700 dark:text-neutral-300">
-            Computer science graduate building practical, reliable software with
+          <p className="mt-7 max-w-2xl text-xl leading-8 text-neutral-700 dark:text-neutral-300">
+            BSc. Computer Science graduate building practical, reliable software with
             a focus on secure systems, networked applications, and thoughtful
             user experiences.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2">
             <Link
               href="/projects"
-              className="soft-lift rounded-md bg-neutral-950 px-5 py-2.5 font-mono text-sm text-white hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-neutral-300"
+              className="minimal-action project-row"
             >
-              ./projects
+              View projects
             </Link>
+            <span className="h-4 w-px bg-neutral-200 dark:bg-neutral-800" aria-hidden="true" />
             <Link
               href="/Resume (Faris Salhi).pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="soft-lift rounded-md border border-neutral-300 px-5 py-2.5 font-mono text-sm text-neutral-800 hover:border-teal-700/30 hover:bg-white dark:border-neutral-700 dark:text-neutral-200 dark:hover:border-teal-300/30 dark:hover:bg-neutral-900"
+              className="minimal-action project-row"
             >
-              resume.pdf
+              Resume
             </Link>
+            <span className="h-4 w-px bg-neutral-200 dark:bg-neutral-800" aria-hidden="true" />
             <a
               href="mailto:faris1.salhi@gmail.com"
-              className="motion-link px-1 py-2.5 font-mono text-sm text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-50"
+              className="minimal-action project-row"
             >
-              contact
+              Contact
             </a>
           </div>
-          <div className="mt-10 grid max-w-2xl gap-4">
-            <div className="terminal-frame rounded-md p-4 font-mono text-sm text-neutral-700 dark:text-neutral-300">
-              <div className="mb-4 flex gap-1.5" aria-hidden="true">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
-                <span className="h-2.5 w-2.5 rounded-full bg-teal-400/70" />
-              </div>
-              <p className="terminal-line">cat focus.txt</p>
-              <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+          <div className="mt-12 max-w-2xl">
+            <div>
+              <p className="eyebrow">Focus</p>
+              <p className="mt-3 font-medium leading-6 text-neutral-950 dark:text-neutral-50">
                 Build carefully. Ship cleanly. Keep the system understandable.
-                <span className="terminal-cursor" />
               </p>
             </div>
-            <AgeCounter birthDate={birthDate} />
           </div>
         </div>
-        <div className="relative w-full max-w-72 justify-self-start md:justify-self-end">
-          <div className="soft-lift aspect-[4/5] overflow-hidden rounded-md border border-neutral-200 bg-neutral-100 shadow-[0_24px_80px_-56px_rgba(15,23,42,0.7)] dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-[0_24px_80px_-56px_rgba(20,184,166,0.35)]">
+        <div className="reveal-block reveal-delay-1 relative grid w-full max-w-64 gap-4 justify-self-start md:justify-self-end">
+          <div className="image-frame aspect-[4/5] overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100 shadow-[0_24px_80px_-60px_rgba(15,23,42,0.55)] dark:border-neutral-800 dark:bg-neutral-900">
             <Image
               src="/Faris.jpg"
               alt="Faris Salhi"
@@ -71,49 +64,48 @@ export default function Page() {
               className="h-full w-full object-cover"
             />
           </div>
+          <AgeCounter birthDate={birthDate} />
         </div>
       </section>
 
-      <section className="grid gap-4 border-y border-neutral-200/70 py-10 dark:border-neutral-800 md:grid-cols-3">
-        <div className="soft-lift rounded-md border border-transparent p-3 hover:border-neutral-200 hover:bg-white/70 dark:hover:border-neutral-800 dark:hover:bg-neutral-900/55">
-          <p className="font-mono text-xs text-neutral-500 dark:text-neutral-500">
+      <section className="reveal-block reveal-delay-1 grid gap-8 border-y border-neutral-200/70 py-10 dark:border-neutral-800 md:grid-cols-3">
+        <div>
+          <p className="eyebrow">
             Current focus
           </p>
-          <p className="mt-2 font-medium text-neutral-950 dark:text-neutral-50">
+          <p className="mt-3 font-medium leading-6 text-neutral-950 dark:text-neutral-50">
             Secure, scalable applications
           </p>
         </div>
-        <div className="soft-lift rounded-md border border-transparent p-3 hover:border-neutral-200 hover:bg-white/70 dark:hover:border-neutral-800 dark:hover:bg-neutral-900/55">
-          <p className="font-mono text-xs text-neutral-500 dark:text-neutral-500">
+        <div>
+          <p className="eyebrow">
             Background
           </p>
-          <p className="mt-2 font-medium text-neutral-950 dark:text-neutral-50">
+          <p className="mt-3 font-medium leading-6 text-neutral-950 dark:text-neutral-50">
             BSc Computer Science, University of Calgary
           </p>
         </div>
-        <div className="soft-lift rounded-md border border-transparent p-3 hover:border-neutral-200 hover:bg-white/70 dark:hover:border-neutral-800 dark:hover:bg-neutral-900/55">
-          <p className="font-mono text-xs text-neutral-500 dark:text-neutral-500">
+        <div>
+          <p className="eyebrow">
             Strengths
           </p>
-          <p className="mt-2 font-medium text-neutral-950 dark:text-neutral-50">
+          <p className="mt-3 font-medium leading-6 text-neutral-950 dark:text-neutral-50">
             Leadership, problem solving, and delivery
           </p>
         </div>
       </section>
 
-      <section>
-        <div className="mb-6 flex items-end justify-between gap-4">
+      <section className="reveal-block reveal-delay-2">
+        <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <p className="terminal-line font-mono text-sm text-neutral-500 dark:text-neutral-500">
-              ls ./selected-work
-            </p>
-            <h2 className="mt-2 text-2xl font-semibold text-neutral-950 dark:text-neutral-50">
-              Recent projects
+            <p className="eyebrow">Selected work</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.01em] text-neutral-950 dark:text-neutral-50">
+              Projects with purpose
             </h2>
           </div>
           <Link
             href="/projects"
-            className="motion-link hidden font-mono text-sm text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-50 sm:block"
+            className="motion-link hidden font-mono text-sm text-neutral-500 hover:text-neutral-950 dark:text-neutral-500 dark:hover:text-neutral-50 sm:block"
           >
             view all
           </Link>

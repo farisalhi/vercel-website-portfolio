@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     template: '%s | Faris Salhi',
   },
   description:
-    'Portfolio of Faris Salhi, a computer science graduate focused on software engineering, networking, and security.',
+    'Portfolio of Faris Salhi, a BSc. Computer Science graduate focused on software, networking, and security.',
   openGraph: {
     title: 'Faris Salhi',
     description:
-      'Portfolio of Faris Salhi, a computer science graduate focused on software engineering, networking, and security.',
+      'Portfolio of Faris Salhi, a BSc. Computer Science graduate focused on software, networking, and security.',
     url: baseUrl,
     siteName: 'Faris Salhi',
     locale: 'en_US',
@@ -59,8 +59,8 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="antialiased w-full min-h-screen bg-stone-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50">
-        <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-5 sm:px-8 sm:py-7">
+      <body className="w-full min-h-screen antialiased text-neutral-950 dark:text-neutral-50">
+        <div className="page-shell flex min-h-screen flex-col px-5 py-5 sm:px-8 sm:py-7">
           <Providers>
             <Navbar />
             <main className="flex-grow py-10 sm:py-14">
