@@ -3,3 +3,110 @@
 @tailwind utilities;
 
 @import '@fontsource/inter';
+
+::selection {
+  background: rgb(20 184 166 / 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@layer base {
+  a,
+  button {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-50 dark:focus-visible:ring-offset-neutral-950;
+  }
+}
+
+@layer components {
+  .terminal-frame {
+    @apply border border-neutral-200 bg-white/70 shadow-[0_24px_80px_-56px_rgba(15,23,42,0.55)] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/60 dark:shadow-[0_24px_80px_-56px_rgba(20,184,166,0.35)];
+  }
+
+  .terminal-line::before {
+    content: '$ ';
+    @apply text-teal-700 dark:text-teal-300;
+  }
+
+  .terminal-cursor::after {
+    content: '_';
+    animation: cursor-blink 1.4s steps(2, start) infinite;
+    @apply ml-1 text-teal-700 dark:text-teal-300;
+  }
+
+  .motion-link {
+    @apply relative transition-colors duration-300;
+  }
+
+  .motion-link::after {
+    content: '';
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 280ms var(--ease-out-soft, ease);
+    @apply absolute -bottom-0.5 left-0 h-px w-full bg-teal-600 dark:bg-teal-300;
+  }
+
+  .motion-link:hover::after,
+  .motion-link:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .soft-lift {
+    transition:
+      transform 280ms var(--ease-out-soft, ease),
+      border-color 280ms var(--ease-out-soft, ease),
+      background-color 280ms var(--ease-out-soft, ease),
+      color 280ms var(--ease-out-soft, ease),
+      box-shadow 280ms var(--ease-out-soft, ease);
+  }
+
+  .soft-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .prose {
+    @apply max-w-none text-neutral-700 dark:text-neutral-300;
+  }
+
+  .prose p {
+    @apply my-5 leading-8;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3 {
+    @apply mt-10 font-semibold text-neutral-950 dark:text-neutral-50;
+  }
+
+  .prose ul {
+    @apply my-5 list-disc space-y-2 pl-5;
+  }
+
+  .prose code {
+    @apply rounded bg-neutral-200 px-1.5 py-0.5 text-sm text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100;
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}

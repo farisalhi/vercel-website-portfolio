@@ -8,7 +8,17 @@ export const metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8">my projects</h1>
+      <div className="mb-10 max-w-2xl">
+        <p className="terminal-line font-mono text-sm text-neutral-500 dark:text-neutral-500">
+          ls ./projects
+        </p>
+        <h1 className="mt-2 text-4xl font-semibold text-neutral-950 dark:text-neutral-50">
+          Projects
+        </h1>
+        <p className="mt-4 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
+          A collection of software, systems, and creative technical projects.
+        </p>
+      </div>
       <Projects />
     </section>
   )

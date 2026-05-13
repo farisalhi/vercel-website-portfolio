@@ -69,12 +69,12 @@ export default function Project({ params }: ProjectPageProps) {
   }
 
   return (
-    <section>
+    <section className="max-w-3xl">
       <Link
         href="/projects"
-        className="transition-all text-neutral-800 dark:text-neutral-200 hover:font-bold mb-4 inline-block">
-        <span className="inline-block transition-transform transform duration-200 hover:-translate-x-1 mr-1">
-          &larr;
+        className="motion-link mb-8 inline-flex items-center font-mono text-sm text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-50">
+        <span className="mr-2 inline-block">
+          {'<-'}
         </span>
         back to projects
       </Link>
@@ -102,13 +102,18 @@ export default function Project({ params }: ProjectPageProps) {
           }),
         }}
       />
-      <h1 className="title font-semibold text-4xl tracking-normal">
+      <h1 className="text-4xl font-semibold tracking-normal text-neutral-950 dark:text-neutral-50 sm:text-5xl">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+      <div className="mt-4 mb-10 flex flex-wrap items-center gap-3 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>
+        {post.metadata.languages && (
+          <span className="rounded-md border border-neutral-200 px-2.5 py-1 font-mono text-xs text-neutral-600 dark:border-neutral-700 dark:text-neutral-400">
+            {post.metadata.languages}
+          </span>
+        )}
       </div>
       <article className="prose">
         <CustomMDX source={post.content} />
